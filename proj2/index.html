@@ -1,0 +1,412 @@
+<html>
+  <head>
+    <title>Project Two</title>
+    <link rel="stylesheet" href="../css/blueprint/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="../css/blueprint/print.css" type="text/css" media="print">
+    
+  </head>
+  
+  <body>
+  
+  	<div class="container">
+  	
+  	<div class="line-separator"></div>
+  	
+  	<h1>Texture Synthesis and Transfer</h1>
+  	
+  	<div class="line-separator"></div>
+  	
+    <h2>
+	    Texture Synthesis
+    </h2>
+    
+    
+    <h3>
+	    Results
+    </h3>
+    
+    <div class="span-24">
+    	<p>
+    		The following are examples of texture synthesis, by methods described in the Efros and Freeman 
+    		<a href="http://graphics.cs.cmu.edu/people/efros/research/quilting/quilting.pdf">paper</a>. 
+    		in the order of random, minimized overlapping cost, and minimized overlapping cost and minimum cut 
+    		through overlap.
+    	</p>
+    </div>
+    
+    <div class="container append-bottom">
+    
+    	<p>Polka dots</p>	
+	    
+	    <div class="span-3">
+		    <img class='h' src="samples/polka_dots.jpg" alt="polka_dots" />
+	    </div>
+	    
+	    <div class="span-7">
+	    	<img class='h' src="images/dots_random_97.jpeg" alt="dots_random_97" />
+	    </div>
+	    
+	    <div class="span-7">
+	    	<img class='h' src="images/dots_simple_97.jpeg" alt="dots_simple_97" />
+	    </div>
+	    
+	    <div class="span-7 last">
+	    	<img class='h' src="images/dots_cut_97.jpeg" alt="dots_cut_97" />
+	    </div>
+	    
+    </div>
+  
+    <div class="container append-bottom">
+    
+    	<p>Water on metal</p>
+	    
+	    <div class="span-3">
+		    <img class='h' src="samples/water.jpg" alt="water" />
+	    </div>
+	    
+	    <div class="span-7">
+	    	<img class='h' src="images/water_random_107.jpg" alt="water_random_101" />
+	    </div>
+	    
+	    <div class="span-7">
+	    	<img class='h' src="images/water_simple_107.jpg" alt="water_simple_101" />
+	    </div>
+	    
+	    <div class="span-7 last">
+	    	<img class='h' src="images/water_cut_107.jpg" alt="water_cut_101" />
+	    </div>
+	    
+    </div>
+    
+    <div class="container append-bottom">
+    
+    	<p>Almonds</p>
+	    
+	    <div class="span-3">
+		    <img class='h' src="samples/almonds.jpg" alt="water" />
+	    </div>
+	    
+	    <div class="span-7">
+	    	<img class='h' src="images/almond_random_107.jpeg" alt="almond_random_107" />
+	    </div>
+	    
+	    <div class="span-7">
+	    	<img class='h' src="images/almond_simple_107.jpeg" alt="almond_simple_107" />
+	    </div>
+	    
+	    <div class="span-7 last">
+	    	<img class='h' src="images/almond_cut_107.jpeg" alt="almond_cut_107" />
+	    </div>
+	    
+    </div>
+    
+    <div class="container append-bottom">
+    
+    	<p>Crowd</p>
+	    
+	    <div class="span-3">
+		    <img class='h' src="samples/crowd.jpg" alt="crowd" />
+	    </div>
+	    
+	    <div class="span-7">
+	    	<img class='h' src="images/crowd_random_27.jpeg" alt="crowd_random_27" />
+	    </div>
+	    
+	    <div class="span-7">
+	    	<img class='h' src="images/crowd_simple_27.jpeg" alt="crowd_simple_27" />
+	    </div>
+	    
+	    <div class="span-7 last">
+	    	<img class='h' src="images/crowd_cut_27.jpeg" alt="crowd_cut_27" />
+	    </div>
+	    
+    </div>
+    
+    <div class="container append-bottom">
+    
+    	<p>Mosaic</p>
+	    
+	    <div class="span-3">
+		    <img class='h' src="samples/mosaic.jpg" alt="mosaic" />
+	    </div>
+	    
+	    <div class="span-7">
+	    	<img class='h' src="images/mosaic_random_101.jpeg" alt="mosaic_random_101" />
+	    </div>
+	    
+	    <div class="span-7">
+	    	<img class='h' src="images/mosaic_simple_101.jpeg" alt="mosaic_simple_101" />
+	    </div>
+	    
+	    <div class="span-7 last">
+	    	<img class='h' src="images/mosaic_cut_101.jpeg" alt="mosaic_cut_101" />
+	    </div>
+	    
+    </div>
+    
+    <div class="line-separator"></div>
+    
+    <h3>
+	    Seam Finding Illustration
+    </h3>
+    
+    <div class="container append-bottom">
+    
+    	<p>Two patches overlapped:</p>
+    	
+    	<div class="span-6">
+    		<img class='h' src="images/pl_5.jpg" alt="pl_5" />
+    	</div>
+    	
+    	<div class="span-12">
+    		<img class='h' src="images/overlapped_5.jpg" alt="overlapped_5" />
+    	</div>
+    	
+    	<div class="span-6 last">
+    		<img class='h' src="images/pr_5.jpg" alt="pr_5" />
+    	</div>
+    
+    </div>
+    
+    <div class="container append-bottom">
+    
+    	<p>Two patches merged:</p>
+    	
+    	<div class="span-6">
+    		<img class='h' src="images/pl_5.jpg" alt="pl_5" />
+    	</div>
+    	
+    	<div class="span-12">
+    		<img class='h' src="images/merged_5.jpg" alt="merged_5" />
+    	</div>
+    	
+    	<div class="span-6 last">
+    		<img class='h' src="images/pr_5.jpg" alt="pr_5" />
+    	</div>
+    
+    </div>
+    
+    <div class="container append-bottom">
+    
+    	<p>Minimum cut between overlapping reigon</p>
+    	
+    	<div class="span-4">
+    		<img class='h' src="images/pl_5_matted.jpg" alt="pl_5_matted" />
+    		<p>Masked left</p>
+    	</div>
+    	
+    	<div class="span-1">
+	    	<p></p>
+    	</div>
+    	
+    	<div class="span-4">
+    		<img class='h' src="images/path_5.jpg" alt="path_5" />
+    		<p>Path Mask</p>
+    	</div>
+    	
+    	<div class="span-1">
+	    	<p></p>
+    	</div>
+    	
+    	<div class="span-4">
+    		<img class='h' src="images/cost.jpg" alt="cost" />
+    		<p>Path on cost</p>
+    	</div>
+    	
+    	<div class="span-1">
+	    	<p></p>
+    	</div>
+    	
+    	<div class="span-4">
+    		<img class='h' src="images/cost_5.jpg" alt="cost_5" />
+    		<p>Cost in grayscale</p>
+    	</div>
+    	
+    	<div class="span-1">
+	    	<p></p>
+    	</div>
+    	
+    	<div class="span-4 last">
+    		<img class='h' src="images/pr_5_matted.jpg" alt="pr_5_matted" />
+    		<p>Masked right</p>
+    	</div>
+    
+    </div>
+    
+    <div class="line-separator"></div>
+    
+    <h2>Texture Transfer</h2>
+    
+    <h3>Principle</h3>
+    
+    <p> The following results are achieved by the iterative texture transfer method described in the paper by
+    	Efros and Freeman. The correspondence map is chosen to be the gaussian-filtered grayscale images of
+    	the source and target.
+    </p>
+    
+    <p>
+	    This algorithm picks blocks to overlap with existing ones with respect to three metric:
+	    
+	    <ul>
+			<li>The closeness of pixel values with the overlapping region in the existing block, measured by SSD of pixel values.</li>
+			<li>The closeness of intensity values of the block with the corresponding block in the target image, or that of a special correspondence map,
+				in this case, I used the gaussian of the grayscale images.
+			</li>
+			<li>The closeness of pixel values with the overlapping region in the corresponding block from the previous iteration, which has a bigger block size and
+				tighter alpha value.
+			</li>
+		</ul>
+    </p>
+    
+    <div class="line-separator"></div>
+    
+    <h3>Results</h3>
+    
+    <div class="container append-bottom">
+    
+	    <p>Obama and gravel</p>
+	    
+	    <div class="span-4">
+		    <p></p>
+	    </div>
+	    
+	    <div class="span-5">
+		    <img class='h' src="samples/obama.jpg" alt="obama" />
+		    <p></p>
+		    <img class="h" src="samples/gravel.jpg" alt="gravel" />
+		    <p></p>
+	    </div>
+	    
+	    <div class="span-11">
+		    <img class="h" src="images/obama_grav.jpg" alt="obama_grav" />
+	    </div>
+	    
+	    <div class="span-4 last">
+		    <p></p>
+	    </div>
+	    
+    </div>
+    
+    <div class="container append-bottom">
+    
+    	<p>Different effect with different initial block size:</p>
+    	
+    	<div class="container append-bottom">
+	    	<div class="span-3"><p>
+		    	
+	    	</p></div>
+	    
+	    	<div class="span-5">
+		    	<img class="h" src="samples/mosaic.jpg" alt="mosaic" />
+	    	</div>
+	    	
+	    	<div class="span-3"><p>
+		    	
+	    	</p></div>
+	    	
+	    	<div class="span-2">
+		    	<p> </p>
+		    </div>
+	    	
+	    	<div class="span-3"><p>
+		    	
+	    	</p></div>
+	    
+	    	<div class="span-5">
+		    	<img class="h" src="samples/mosaic.jpg" alt="mosaic" />
+	    	</div>
+	    	
+	    	<div class="span-3 last"><p>
+		    	
+	    	</p></div>
+    	
+    	</div>
+	    
+	    <div class="span-11">
+		    <img class="h" src="images/obama_grav_big.jpg" alt="obama_grav_big" />
+		    <p>large initial block size, the mosaic's block texture is adequately reflected</p>
+	    </div>
+	    
+	    <div class="span-2">
+	    	<p> </p>
+	    </div>
+	    
+	    <div class="span-11 last">
+		    <img class="h" src="images/obama_mosa.jpg" alt="obama_mosa" />
+		    <p>small initial block size, the block texture faded and the color is highlighted instead</p>
+	    </div>
+	    
+    </div>
+        
+    <div class="container append-bottom">
+    
+	    <p>Obama and crowd, due to the small sample size, there are significant repetition in tile selection.</p>
+	    
+	    <div class="span-4">
+		    <p></p>
+	    </div>
+	    
+	    <div class="span-5">
+		    <img class='h' src="samples/obama.jpg" alt="obama" />
+		    <p></p>
+		    <img class="h" src="samples/crowd.jpg" alt="crowd" />
+		    <p></p>
+	    </div>
+	    
+	    <div class="span-11">
+		    <img class="h" src="images/obama_ppl.jpg" alt="obama_ppl" />
+	    </div>
+	    
+	    <div class="span-4 last">
+		    <p></p>
+	    </div>
+	    
+    </div>
+    
+    <div class="container append-bottom">
+    
+	    <p>Two smaller examples of Feynman and gravel to demonstrate standard performance:</p>
+	    
+	    <div class="span-8">
+		    <img class="h" src="samples/feynman.jpg" alt="feynman" />
+	    </div>
+	    
+	    <div class="span-8">
+		    <img class="h" src="images/fey_grav.jpg" alt="fey_grav" />
+	    </div>
+	    
+	    <div class="span-8 last">
+		    <img class="h" src="images/fey_mosa.jpg" alt="fey_mosa" />
+	    </div>
+	    
+    </div>
+    
+    <div class="line-separator"></div>
+    
+    <h2>Challenges</h2>
+    
+   	<ul> 
+	    <li>
+		    Indexing of patches in the entire process, including picking out the next patch, calculating the mask, and applying the max, are
+		    not something that is difficult to understand, but simply mechanically prone to mistakes. 
+	    </li>
+	    
+	    <li>
+		    Debugging process is difficult since there are too many variables that the algorithm itself does not strictly control, therefore
+		    no reference of comparison exist. The choice of texture, block size and tolerance all affect the quality of the result.
+	    </li>
+	    
+	    <li>
+		    Synthesizing or transferring to large images require significant amount of computing power, especially for iterative methods. The
+		    author of the paper used relatively small images and the algorithm run for at most few minutes. To generate the Obama picture,
+		    which has more than two million pixels, the iterative method with five iterations took more than three hours on a dual-Xeon 12 core
+		    machine. 
+	    </li>
+	    
+    <ul>
+    
+  	</div>
+  	
+  </body>
+
+</html>

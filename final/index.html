@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head>
+	<title>Final Project</title>
+	
+	<link rel="stylesheet" href="../css/blueprint/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="../css/blueprint/print.css" type="text/css" media="print">
+    <link href="./css/lightbox.css" rel="stylesheet" />
+    
+    <script type="text/javascript" src='pan.js' id="pan"></script>
+	<script type="text/javascript" src="./js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="./js/lightbox.js"></script>
+	
+	<style>
+	canvas 
+	{
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border: 10px black solid;
+    background: black;
+    }
+    p
+    {
+	text-align: justify;
+    }
+    p.chinese
+    {
+	font-family: Verdana;
+    }
+    </style>
+	
+</head>
+
+<body bgcolor="white" onload="">
+	<div class="container">
+	
+	<div class="line-separator"></div>
+  	<h1>Interactive Cylindrical Panorama Viewer</h1>
+  	<div class="line-separator"></div>
+  	
+  	<h2>Principles</h2>
+  	
+  	<div class="container append-bottom">
+  	
+  	<h3>Geometric Fundation</h3>
+	  	<p>
+		  	<a href="http://web.engr.illinois.edu/~jli65/cs498dwh/proj5">Project Five</a> presented a preliminary 
+		  	investigation of the projective geometry behind the construction of planar panorama stitchings, as well
+		  	as the technique to automatically identify corresponding points of interest between images. This time
+		  	I am to present a different way to construct and interact with panoramas.
+	  	</p>
+	  	
+	  	<p>
+	  		The natural way of constructing panoramas is not planar, as humans have a certain field of view and
+	  		it is not practical to project space beyond that field of view onto a flat plane. When we rotate our
+	  		heads, what we are doing is changing this plane corresponding to a specific angle of view. Therefore,
+	  		it makes more sense to project images onto a cylindrical surface.
+	  	</p>
+	  	
+	  	<div class="container append-bottom">
+	  	<div class="span-8"><p></p></div>
+	  	<div class="span-8">
+		  	<img class="h" src="./img/cyl.jpg">
+	  	</div>
+	  	<div class="span-8 last"><p></p></div>
+	  	</div>
+	  	
+	  	<p>
+	  		As shown in the diagram above, the relation between a point in the Euclidean coordinate system
+	  		and a point in the cylindrical coordinate system is summarized below, where f is the
+	  		focal length of the images, which is converted to pixels in practice, and s is a scaling factor,
+	  		chosen to be f to minimize distortion in the zero degree point of warped image:
+	  	</p>
+	  	
+	  	<div class="container append-bottom">
+	  	<div class="span-8"><p></p></div>
+	  	<div class="span-8">
+		  	<img class="h" src="./img/relation.jpg">
+	  	</div>
+	  	<div class="span-8 last"><p></p></div>
+	  	
+	  	<div class="span-8"><p></p></div>
+	  	<div class="span-8">
+		  	<img class="h" src="./img/eqn.jpg">
+	  	</div>
+	  	<div class="span-8 last"><p></p></div>
+	  	</div>
+	  	
+	  	<p>
+	  		For further information and the source of above diagram and formulas, see Richard Szeliski's
+	  		<a href="http://szeliski.org/Book/">book</a>, page 438.
+	  	</p>
+	  	
+	<div class="line-separator"></div>
+	  	
+	<h3>Algorithm</h3>
+	  	<div class="container">
+	  	<p>
+		  	The process of constructing cylindrical panoramas are similar to planar panoramas, except now
+		  	the matrix governs the relation between two individual images is no longer homography, but rather
+		  	a translation in the cylindrical coordinate system:
+		  	
+		  	<ul> 
+		  		<li>
+				    Identify corresponding feature points in the original images (since they have higher 
+				    resolution), manually or by <a href="http://www.cs.ubc.ca/~lowe/keypoints/">SIFT</a>;
+			    </li>
+			    
+			    <li>
+				    Warp all input images, as well as all detected feature points into the cylindrical coordinate system;
+			    </li>
+			    
+			    <li>
+				    Compute the translation according to warped feature points, either manually or by 
+				    <a href="http://www.ai.sri.com/pubs/files/836.pdf">RANSAC</a>;
+			    </li>
+			    
+			    <li>
+					Stitch, exposure adjust and multi-band laplacian blend.
+			    </li>
+		    <ul>
+	  	</p>
+	  	</div>
+	  	
+	<div class="line-separator"></div>
+	  	
+	<h3>Presentation</h3>
+	  	<p>
+	  		Besides the geometry of the mapping, one other challenging aspect of panorama in general is the
+	  		presentation. Projection onto a cylindrical surface solves the problem of the extreme distortion
+	  		of linear mapping, yet introduces a new inconvenience: the width of the output image. Such concern
+	  		isn't prevalent when the panorama at question is of reasonable horizontal angle of view. However,
+	  		360 degree full panoramas turns out to be extremely long and narrow, that is in the cylindrical 
+	  		coordinate system at least. And this long narrow strip is rather inconvenient to display and view,
+	  		as shown by the examples.
+	  	</p>
+	  	
+	  	<p>
+	  		To solve this problem, in the following examples I have adopted an interactive approach to 
+	  		present such panoramas. The techniques involved are based on javascript and the 
+	  		<a href="http://www.w3schools.com/html/html5_canvas.asp">canvas</a> object
+	  		provided by the HTML5 standard. The javascript source code that is driving the interactive
+	  		process is <a href="http://web.engr.illinois.edu/~jli65/cs498dwh/finalProject/pan.js">here</a>
+	  		, due to constraints of time, I have not provided comprehensive comments (rather
+	  		no comment at all).
+	  	</p>
+	  	
+	  	<p>
+	  		In short, the panorama is repainted each time the user engages in either dragging or scrolling
+	  		the picture. The projected painting is a simplified version of the inverse of the correspondences 
+	  		above. Each vertical slice of the original image is repainted depending on its horizontal location
+	  		in the view. Scaling is done so that the very edge of the source image fits exactly the height of
+	  		the canvas, and the horizontal width of the painted segment is determined by the field of view
+	  		user chooses (mouse wheel scroll). 
+	  	</p>
+	  	
+  	</div>
+  	
+  	<div class="line-separator"></div>
+  	
+  	<h2>Results</h2>
+  	
+  	<div class="container append-bottom">
+  		<p style="color:red;">
+  			INTERACTIVE FEATURES DEPENDS ON BROWSER SUPPORT OF HTML5 AND A PARTICULAR WAY OF INTERACTING WITH 
+  			JAVASCRIPT EVENT LISTENERS, WHICH REQUIRE AN UP TO DATE 
+  			<strong style="color: black">Safari</strong>,
+  			<strong style="color: black">Chrome</strong>,
+  			<strong style="color: black">Firefox</strong> or
+  			<strong style="color: black">Internet Explorer (IE) 9</strong>.
+  		</p>
+  		
+  		<p style="color:red;">
+  			IF YOU DO NOT SEE AN IMAGE BETWEEN <strong style="color: black">Union Court</strong> AND 
+  			<strong style="color: black">Flattened Image</strong>, OR IF CLICK AND DRAG ON THAT 
+  			IMAGE DOES NOT MAKE IT TO ROTATE, PLEASE UPGRADE YOUR BROWSER OR DOWNLOAD AND INSTALL THE NEWEST
+  			VERSION OF THE FOUR BROWSERS MENTIONED ABOVE.
+  		</p>
+  		
+  		<p class="chinese">
+  			如果 Union Court 与 Flattened Image 之间不显示任何图片, 或者鼠标点击及挪动此图片不产生任何效果, 请下载最新版本的 
+  			Chrome(谷歌浏览器), Internet Explorer (IE) 9, Firefox(火狐), Safari(苹果电脑用户适用), 或者 360 浏览器。
+  			我的测试显示 搜狗 目前不支持 HTML5, 请下载以上浏览器以替代。
+  		</p>
+  	
+	  	<p>
+		  	To view the panorama, click and drag the projected image horizontally. Use scroll wheel to
+		  	change view angle. If the images do not load immediately, wait for a few moments and refresh. 
+	  	</p>
+  	</div>
+  	
+  	<div class="line-separator"></div>
+  	
+  	
+  	<h3> Union Court </h3>
+	
+	<div class="container append-bottom">
+		<div class="container append-bottom">
+			<canvas class="pan" id="unionCourt" ></canvas>
+		</div>
+		
+		<div class="container">
+			<p>
+				Flattened image: (click to magnify 点击放大)
+			</p>
+		</div>
+		
+		<div class="span-24 append-bottom">
+			<a href="./img/unionCourt/unionCourtCropped.jpg" rel="lightbox">
+			<img class="h" src='./img/unionCourt/unionCourtCropped.jpg', onload="init(0, 'unionCourt');">
+			</a>
+		</div>
+		
+		<div class="container">
+			<p>
+				Component images:
+			</p>
+		</div>
+		
+		<div class="container append-bottom">
+			<div class="span-8">
+				<img class="h" src='./img/unionCourt/unionCourt-1.jpg'>
+			</div>
+			
+			<div class="span-8">
+				<img class="h" src='./img/unionCourt/unionCourt-2.jpg'>
+			</div>
+			
+			<div class="span-8 last">
+				<img class="h" src='./img/unionCourt/unionCourt-3.jpg'>
+			</div>
+			
+			<div class="span-8">
+				<img class="h" src='./img/unionCourt/unionCourt-4.jpg'>
+			</div>
+			
+			<div class="span-8">
+				<img class="h" src='./img/unionCourt/unionCourt-5.jpg'>
+			</div>
+			
+			<div class="span-8 last">
+				<img class="h" src='./img/unionCourt/unionCourt-6.jpg'>
+			</div>
+		</div>
+	
+	<div class="line-separator"></div>
+	
+	</div>
+  	
+  	<h3> Siebel Center Atrium </h3>
+	
+	<div class="container append-bottom">		
+		<div class="container append-bottom">
+			<canvas class="pan" id="sbInside" ></canvas>
+		</div>
+		
+		<div class="container">
+			<p>
+				Flattened image: (click to magnify 点击放大)
+			</p>
+		</div>
+		
+		<div class="span-24 last append-bottom">
+			<a href="./img/sbAtrium/sbAtriumCropped.jpg" rel="lightbox">
+			<img class="h" src='./img/sbAtrium/sbAtriumCropped.jpg', onload="init(1, 'sbInside');">
+			</a>
+		</div>
+		
+		<div class="container">
+			<p>
+				Component images:
+			</p>
+		</div>
+		
+		<div class="container append-bottom">
+			<div class="span-8">
+				<img class="h" src='./img/sbAtrium/sbAtrium-1.jpg'>
+			</div>
+			
+			<div class="span-8">
+				<img class="h" src='./img/sbAtrium/sbAtrium-2.jpg'>
+			</div>
+			
+			<div class="span-8 last">
+				<img class="h" src='./img/sbAtrium/sbAtrium-3.jpg'>
+			</div>
+			
+			<div class="span-8">
+				<img class="h" src='./img/sbAtrium/sbAtrium-4.jpg'>
+			</div>
+			
+			<div class="span-8">
+				<img class="h" src='./img/sbAtrium/sbAtrium-5.jpg'>
+			</div>
+			
+			<div class="span-8 last">
+				<img class="h" src='./img/sbAtrium/sbAtrium-6.jpg'>
+			</div>
+		</div>
+		
+	<div class="line-separator"></div>
+		
+	</div>
+	
+	<h3> My Study </h3>
+	
+	<div id="imgbox"></div>
+	
+	<div class="container append-bottom">
+		<div class="span-24 last append-bottom">
+			<canvas class="pan" id="myStudy"></canvas>
+		</div>
+		
+		<div class="container">
+			<p>
+				Flattened image: (click to magnify 点击放大)
+			</p>
+		</div>
+		
+		<div class="span-24 last append-bottom">
+			<a href="./img/myStudy/myStudyCropped.jpg" rel="lightbox">
+			<img class="h" src="./img/myStudy/myStudyCropped.jpg" onload="init(2, 'myStudy');"/>
+			</a>
+		</div>
+		
+		<div class="container">
+			<p>
+				Component images:
+			</p>
+		</div>
+		
+		<div class="container append-bottom">
+			<div class="span-8">
+				<img class="h" src='./img/myStudy/myStudy-1.jpg'>
+			</div>
+			
+			<div class="span-8">
+				<img class="h" src='./img/myStudy/myStudy-2.jpg'>
+			</div>
+			
+			<div class="span-8 last">
+				<img class="h" src='./img/myStudy/myStudy-3.jpg'>
+			</div>
+			
+			<div class="span-8">
+				<img class="h" src='./img/myStudy/myStudy-4.jpg'>
+			</div>
+			
+			<div class="span-8">
+				<img class="h" src='./img/myStudy/myStudy-5.jpg'>
+			</div>
+			
+			<div class="span-8 last">
+				<img class="h" src='./img/myStudy/myStudy-6.jpg'>
+			</div>
+			
+			<div class="span-8">
+				<img class="h" src='./img/myStudy/myStudy-7.jpg'>
+			</div>
+			
+			<div class="span-8">
+				<img class="h" src='./img/myStudy/myStudy-8.jpg'>
+			</div>
+			
+			<div class="span-8 last">
+				<img class="h" src='./img/myStudy/myStudy-9.jpg'>
+			</div>
+		</div>
+		
+	</div>
+	
+	<img src="http://www.easycounter.com/counter.php?ljgnemo" border="0" alt="Web Site Hit Counter">
+	
+	</div>
+</body>
+
+
+

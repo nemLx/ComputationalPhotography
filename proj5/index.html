@@ -1,0 +1,311 @@
+<html>
+  <head>
+    <title>Project Five</title>
+    <link rel="stylesheet" href="../css/blueprint/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="../css/blueprint/print.css" type="text/css" media="print">
+    
+  </head>
+  
+  <body>
+  
+  	<div class="container">
+  	
+  	<div class="line-separator"></div>
+  	
+  	<h1>Image Stitching</h1>
+  	
+  	<div class="line-separator"></div>
+  	
+    <h2>
+	    Principle
+    </h2>
+    
+    
+    <div class="span-24">
+    	<p>
+    		Image stitching involves two major steps, computing the transformation between two coordinate systems,
+    		i.e. the homography, and the blending of two images so the results look natural. 
+    	</p>
+    	
+    	<p>
+	    	Computing the homography involves finding at least 4 pairs of corresponding points from two images, as
+	    	this specific type of transformation has 8 degrees of freedom, which translates to 4 pairs of unknowns.
+	    	The corresponding points could be selected manually or automatically.
+    	</p>
+    	
+    	<p>
+	    	To automatically select corresponding points, SIFT descriptors are used to identify keypoints in both
+	    	images that has significant geometric features. The matching of such keypoints are done by RANSAC.
+	    	Specifically, 8 rough matches are randomly picked and a homography is calculates based on them, which is
+	    	then verified against all possible matches. This process is repeated 500 to 1000 times, and the homography
+	    	that predicts the most possible matches is selected as the optimal. Finally, the homography is improved
+	    	numerically by taking all predicted matches into account.
+    	</p>
+    </div>
+    
+    <h2>
+	    Standard Result
+    </h2>
+    
+    <div class="container append-bottom">
+    
+    	<p>Automatic, with multi-band Laplacian blending</p>
+	    
+	    <div class="span-24">
+	    	<img class="h" src="img/grainger/stitched_lap5.jpg" alt="stitched_lap5" width="" height="" />
+	    </div>
+	    
+    </div>
+    
+    <div class="container append-bottom">
+    
+    	<p>Components (color temperature is deliberately altered to magnify blending results)</p>
+	    
+	    <div class="span-12">
+	    	<img class="h" src="img/grainger/original_0.jpg" alt="stitched_lap5" width="" height="" />
+	    </div>
+	    
+	    <div class="span-12 last">
+	    	<img class="h" src="img/grainger/original_1.jpg" alt="stitched_lap5" width="" height="" />
+	    </div>
+	    
+    </div>
+    
+    <div class="container append-bottom">
+    
+    	<p>Automatic SIFT matches</p>
+	    
+	    <div class="span-24">
+	    	<img class="h" src="img/grainger/auto_matches.jpg" alt="stitched_lap5" width="" height="" />
+	    </div>
+	    
+    </div>
+    
+    <div class="container append-bottom">
+    
+    	<p>RANSAC generated matches (good is green, bad is red, image cut to reigon)</p>
+	    
+	    <div class="span-24">
+	    	<img class="h" src="img/grainger/auto_points_0.jpg" alt="stitched_lap5" width="" height="" />
+	    </div>
+	    
+	    <div class="span-24">
+	    	<img class="h" src="img/grainger/auto_points_1.jpg" alt="stitched_lap5" width="" height="" />
+	    </div>
+	    
+    </div>
+    
+    <div class="container append-bottom">
+    
+    	<p>Manual result</p>
+	    
+	    <div class="span-24">
+	    	<img class="h" src="img/grainger/manual.jpg" alt="stitched_lap5" width="" height="" />
+	    </div>
+	    
+    </div>
+    
+    <div class="container append-bottom">
+    
+    	<p>Manual point selection (image cut to region)</p>
+	    
+	    <div class="span-12">
+	    	<img class="h" src="img/grainger/manual_points_0.jpg" alt="stitched_lap5" width="" height="" />
+	    </div>
+	    
+	    <div class="span-12 last">
+	    	<img class="h" src="img/grainger/manual_points_1.jpg" alt="stitched_lap5" width="" height="" />
+	    </div>
+	    
+    </div>
+    
+    <div class="container append-bottom">
+    
+    	<p>Individual projections (trimmed)</p>
+	    
+	    <div class="span-12">
+	    	<img class="h" src="img/grainger/manual_projection_0.jpg" alt="stitched_lap5" width="" height="" />
+	    </div>
+	    
+	    <div class="span-12 last">
+	    	<img class="h" src="img/grainger/manual_projection_1.jpg" alt="stitched_lap5" width="" height="" />
+	    </div>
+	    
+    </div>
+    
+    <div class="container append-bottom">
+    
+    	<p>Comparison between direct overlap and multi-band Laplacian blending</p>
+	    
+	    <div class="span-24">
+	    	<img class="h" src="img/grainger/stitched_noblend.jpg" alt="stitched_lap5" width="" height="" />
+	    </div>
+	    
+	    <div class="span-24">
+	    	<img class="h" src="img/grainger/stitched_lap5.jpg" alt="stitched_lap5" width="" height="" />
+	    </div>
+	    
+    </div>
+	
+	
+    <div class="line-separator"></div>
+    
+    
+    
+    <h2>
+	    Demonstration Results
+    </h2>
+    
+    <div class="container append-bottom">
+    
+    	<p>
+    		All results below are stitched automatically. The first three has comparisons between direct
+	    	overlap and multi-band Laplacian blending. The last result features a large panorama, with 
+	    	intermediate steps included. 
+    	</p>
+    
+    </div>
+    
+    <div class="container append-bottom">
+    	
+    	<p>Siebel front</p>
+    	
+    	<div class="span-12">
+    		<img class="h" src="img/siebel_front/sf_1_0.jpg" alt="sf_1_0" width="" height="" />
+    	</div>
+    	
+    	<div class="span-12 last">
+    		<img class="h" src="img/siebel_front/sf_1_1.jpg" alt="sf_1_0" width="" height="" />
+    	</div>
+    	
+    	<div class="span-24">
+    		<img class="h" src="img/siebel_front/sf_1_noblend.jpg" alt="sf_1_0" width="" height="" />
+    	</div>
+    	
+    	<div class="span-24">
+    		<img class="h" src="img/siebel_front/sf_1_l5.jpg" alt="sf_1_l5" width="" height="" />
+    	</div>
+    
+    </div>
+    
+    
+    
+    <div class="container append-bottom">
+    	
+    	<p>Peak</p>
+    
+    	<div class="span-8">
+    		<img class="h" src="img/peak/pikes_peak_small_00.jpg" alt="pikes_peak_small_00" width="" height="" />
+    	</div>
+    	
+    	<div class="span-8">
+    		<img class="h" src="img/peak/pikes_peak_small_01.jpg" alt="pikes_peak_small_00" width="" height="" />
+    	</div>
+    	
+    	<div class="span-8 last">
+    		<img class="h" src="img/peak/pikes_peak_small_02.jpg" alt="pikes_peak_small_00" width="" height="" />
+    	</div>
+    	
+    	<div class="span-24">
+    		<img class="h" src="img/peak/m_1_noblend.jpg" alt="pikes_peak_small_00" width="" height="" />
+    	</div>
+    	
+    	<div class="span-24">
+    		<img class="h" src="img/peak/m_1_l5.jpg" alt="pikes_peak_small_00" width="" height="" />
+    	</div>
+    
+    </div>
+    
+    
+    
+    <div class="container append-bottom">
+    
+    	<p>Laptop</p>
+    	
+	    <div class="span-6">
+	    	<img class="h" src="img/laptop/laptop_small_00.JPG" alt="laptop_small_00" width="" height="" />
+	    </div>
+	    
+	    <div class="span-6">
+	    	<img class="h" src="img/laptop/laptop_small_01.JPG" alt="laptop_small_00" width="" height="" />
+	    </div>
+	    
+	    <div class="span-6">
+	    	<img class="h" src="img/laptop/laptop_small_02.JPG" alt="laptop_small_00" width="" height="" />
+	    </div>
+	    
+	    <div class="span-6 last">
+	    	<img class="h" src="img/laptop/laptop_small_03.JPG" alt="laptop_small_00" width="" height="" />
+	    </div>
+	    
+	    <div class="span-24">
+	    	<img class="h" src="img/laptop/l_1_noblend.jpg" alt="l_1_noblend" width="" height="" />
+	    </div>
+	    
+	    <div class="span-24">
+	    	<img class="h" src="img/laptop/l_1_l5.jpg" alt="l_1_l5" width="" height="" />
+	    </div>
+	    
+    </div>
+    
+    
+    
+    <div class="container append-bottom">
+    
+    	<p>Siebel back</p>
+    	
+	    <div class="span-4">
+	    	<img class="h" src="img/siebel_back/sb_2_0.jpg" alt="sb_2_0" width="" height="" />
+	    </div>
+	    
+	    <div class="span-4">
+	    	<img class="h" src="img/siebel_back/sb_2_1.jpg" alt="sb_2_0" width="" height="" />
+	    </div>
+	    
+	    <div class="span-4">
+	    	<img class="h" src="img/siebel_back/sb_2_2.jpg" alt="sb_2_0" width="" height="" />
+	    </div>
+	    
+	    <div class="span-4">
+	    	<img class="h" src="img/siebel_back/sb_2_3.jpg" alt="sb_2_0" width="" height="" />
+	    </div>
+	    
+	    <div class="span-4">
+	    	<img class="h" src="img/siebel_back/sb_2_4.jpg" alt="sb_2_0" width="" height="" />
+	    </div>
+	    
+	    <div class="span-4 last">
+	    	<img class="h" src="img/siebel_back/sb_2_5.jpg" alt="sb_2_0" width="" height="" />
+	    </div>
+	    
+	    <div class="span-6">
+	    	<img class="h" src="img/siebel_back/sb21.jpg" alt="sb_2_0" width="" height="" />
+	    </div>
+	    
+	    <div class="span-6">
+	    	<img class="h" src="img/siebel_back/sb45.jpg" alt="sb_2_0" width="" height="" />
+	    </div>
+	    
+	    <div class="span-6">
+	    	<img class="h" src="img/siebel_back/sb213.jpg" alt="sb_2_0" width="" height="" />
+	    </div>
+	    
+	    <div class="span-6 last">
+	    	<img class="h" src="img/siebel_back/sb2130.jpg" alt="sb_2_0" width="" height="" />
+	    </div>
+	    
+	    <div class="span-24">
+	    	<img class="h" src="img/siebel_back/sb213045.jpg" alt="sb_2_0" width="" height="" />
+	    </div>
+	    
+	    <div class="span-24">
+	    	<img class="h" src="img/siebel_back/sb213045 copy.jpg" alt="sb_2_0" width="" height="" />
+	    </div>
+	    
+    </div>
+
+       
+    
+  	</div>
+  </body>
+</html>

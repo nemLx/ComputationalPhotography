@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head>
+	<title>Cylindrical Panorama</title>
+	
+	<link rel="stylesheet" href="./css/blueprint/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="./css/blueprint/print.css" type="text/css" media="print">
+    <link href="./css/lightbox.css" rel="stylesheet" />
+    
+    <script type="text/javascript" src='pan.js' id="pan"></script>
+	<script type="text/javascript" src="./js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="./js/lightbox.js"></script>
+	
+	<style>
+	canvas 
+	{
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border: 10px black solid;
+    background: black;
+    }
+    p
+    {
+	text-align: justify;
+    }
+    p.chinese
+    {
+	font-family: Verdana;
+    }
+    </style>
+	
+</head>
+
+<body bgcolor="white" onload="">
+	<div class="container">
+	
+	<div class="container append-bottom">
+	
+		<div class="container append-bottom">
+			<canvas class="pan" id="kk" ></canvas>
+		</div>
+		
+		<div class="container">
+			<p>
+				Flattened image:
+			</p>
+		</div>
+		
+		<div class="span-24 append-bottom">
+			<a href="./img/k.jpg" rel="lightbox">
+			<img class="h" src='./img/k.jpg', onload="init(0, 'kk');">
+			</a>
+		</div>
+	
+		<div class="container append-bottom">
+			<canvas class="pan" id="k" ></canvas>
+		</div>
+		
+		<div class="container">
+			<p>
+				Flattened image:
+			</p>
+		</div>
+		
+		<div class="span-24 append-bottom">
+			<a href="./img/k/k.jpg" rel="lightbox">
+			<img class="h" src='./img/k/k.jpg', onload="init(1, 'k');">
+			</a>
+		</div>
+		
+		<div class="container">
+			<p>
+				Component images:
+			</p>
+		</div>
+		
+		<div class="container append-bottom">
+			<div class="span-8">
+				<img class="h" src='./img/k/k-1.jpg'>
+			</div>
+			
+			<div class="span-8">
+				<img class="h" src='./img/k/k-2.jpg'>
+			</div>
+			
+			<div class="span-8 last">
+				<img class="h" src='./img/k/k-3.jpg'>
+			</div>
+			
+			<div class="span-8">
+				<img class="h" src='./img/k/k-4.jpg'>
+			</div>
+			
+			<div class="span-8">
+				<img class="h" src='./img/k/k-5.jpg'>
+			</div>
+			
+			<div class="span-8 last">
+				<img class="h" src='./img/k/k-6.jpg'>
+			</div>
+		</div>
+	
+	<div class="line-separator"></div>
+		
+	</div>
+</body>
+
+
+

@@ -1,0 +1,211 @@
+<html>
+  <head>
+    <title>Project One: Hybrid Images and Color Enhancement</title>
+    <link rel="stylesheet" href="../css/blueprint/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="../css/blueprint/print.css" type="text/css" media="print">
+    
+  </head>
+  
+  <body>
+  
+  	<div class="container">
+  	
+  	<div class="span-24">
+    	<h1>Project One: Hybrid Images and Color Enhancement</h1>
+  	</div>
+  	
+    <h2>
+	    Hybrid Images
+    </h2>
+    
+    <div class="container append-bottom">
+    
+	    <p>
+		   	This is my favorite result, which is a combination of a furious fish and a crocodile. The fish picture is taken at Shedd Aquarium, Chicago.
+		   	And the crocodile one is taken at the bio-dome at Montreal Olympic park. 
+	    </p>
+	    
+	    <p>   	
+		   	The high frequency components of the background image is filtered by a gaussian filter with size 100 and sigma 15, while the low frequency 
+		   	component of the foreground image is filtered out by subtracting a gaussian filtered version from itself, with size 100 and sigma 200. 
+		   	These values are obtained by trial and error. This one worked well also because the shape and of the main objects (fish and crocodile) are
+		   	similar at this scale and angle. The contrast of the background image is moderate, therefore the shape of the fish does not intervene with
+		   	the faint details of the crocodile too much.
+	    </p>
+	    
+	    
+	    <img class ="h img_display" src="img/fish_croc_15_200.jpg" alt="fish_croc_15_200"  /> <!-- width="1024" height="548" -->
+    
+    </div>
+  
+    <div class="container append-bottom">
+    
+	    <div class="span-24 append-bottom">
+		    Two component images pre-processing:
+	    </div>
+    
+	    <div class="span-12 ">
+	    	<img class="h" class="img_display" src="img/fish.jpg" alt="fish"  /> <!-- width="512" height="341" -->
+	    </div>
+	    
+	    <div class="span-12 last">
+	    	<img class="h" class="img_display" src="img/croc.jpg" alt="croc"  /> <!-- width="512" height="341" -->
+	    </div>
+    
+    </div>
+    
+    <div class="container append-bottom">
+	    <p>
+		    Laplacian pyramid of the hybrid:
+	    </p>
+    
+	    
+	    <img src="img/g_0.jpg" alt="g_0" width="256" height="117" />
+	    <img src="img/g_1.jpg" alt="g_1" width="256" height="117" />
+	    <img src="img/g_2.jpg" alt="g_2" width="256" height="117" />
+	    <img src="img/g_3.jpg" alt="g_3" width="256" height="117" />
+	    <img src="img/g_4.jpg" alt="g_4" width="256" height="117" />
+	    <p></p>
+	    <img src="img/l_0.jpg" alt="g_0" width="256" height="117" />
+	    <img src="img/l_1.jpg" alt="g_1" width="256" height="117" />
+	    <img src="img/l_2.jpg" alt="g_2" width="256" height="117" />
+	    <img src="img/l_3.jpg" alt="g_3" width="256" height="117" />
+	    <img src="img/l_4.jpg" alt="g_4" width="256" height="117" />
+    
+    </div>
+    
+    <div class="container append-bottom">
+	    <p>
+		    FFT of the hybrid image and two component images:
+	    </p>
+	    
+	    <div class="span-24 append-bottom">
+	    	<img class="h" src="img/fish_croc_fft.jpg" alt="fish_croc_fft" /> <!-- width="1024" height="548"  -->
+	    </div>
+	    
+	    <div class="span-12">
+	    	Low-passed fish
+	    	<img class="h" src="img/fish_low_fft.jpg" alt="fish_fft" /> <!-- width="512" height="274" -->
+	    </div>
+	    
+	    <div class="span-12 last">
+	    	High-passed crocodile
+	    	<img class="h" src="img/croc_high_fft.jpg" alt="croc_fft" /> <!-- width="512" height="274" -->
+	    </div>
+    </div>
+    
+    <div class="container append-bottom">
+	    <p> Combination of a chick and a scanning tunneling microscope picture of an insect, both taken at the Museum of Science and Industry, Chicago. </p>
+	    
+	    <div class="span-24 append-bottom">
+	    	<img class="h" src="img/chicken_bug_15_200.jpg" alt="chicken_bug_15_200" /> <!-- width="1024" height="663" -->
+	    </div>
+	    
+	    <p>
+		    Two component images pre-processing:
+	    </p>
+	    
+	    <div class="span-12">
+	    	<img class="h" src="img/chicken.jpg" alt="chicken" /> <!-- width="512" height="341" -->
+	    </div>
+	    
+	    <div class="span-12 last">
+	    	<img class="h" src="img/bug.jpg" style="image-orientation: 90deg" alt="bug" /> <!-- width="512" height="341" -->
+	    </div>
+    </div>
+    
+    <div class="container append-bottom">
+	    <p>
+		    Alma Mater from Wikipedia and Jesus Christ, which is taken at the Notre Dame Basilica, Montreal, CA. 
+	    </p>
+	    
+	    <div class="span-12 prepend-6 append-6 last append-bottom">
+	    	<img class="h" src="img/alma_jesus_12_200.jpg" alt="alma_jesus_14_200" /> <!-- width="341" height="465" -->
+	    </div>
+		
+		<div class="span-12">	    
+	    	<img class="h" src="img/almaMater-wiki.jpeg" alt="almaMater-wiki" height="641"/> <!-- width="341" height="465" -->
+		</div>
+		
+		<div class="span-12 last">
+	    	<img class="h" src="img/jesus.jpg" alt="jesus" height="641"/> <!-- width="341" height="465" -->
+		</div>
+    </div>
+    
+    <div class="container append-bottom">
+	    <p>
+		    This combination did not yield good results. I believe the reasons it did not work so well are that first the object in the low-passed image has very high
+		    contrast compare to its surroundings, which highlighted its shape too much, and it is not exactly the shape of the object in the high-passed image.
+		    Secondly, the high-passed image was not properly treated such that the details are not very visible. 
+	    </p>
+	    
+	    <div class="span-8">
+	    	<img class="h" src="img/coral_seaHorse_15_200.jpg" alt="coral_seaHorse_15_200" /> <!-- width="341" height="511" -->
+	    </div>
+	    
+	    <div class="span-8">
+	    	<img class="h" src="img/coral.jpg" alt="coral" /> <!-- width="341" height="511" -->
+	    </div>
+	    
+	    <div class="span-8 last">
+	    	<img class="h" src="img/seaHorse.jpg" alt="seaHorse" /> <!-- width="341" height="511" -->
+	    </div>    
+    </div>
+    
+    <h2>
+    	Color Enhancement
+    </h2>
+    
+    <div class="container append-bottom">
+	    <p>
+		    Contrast improvement on a Alma Mater picture, using histogram equalization algorithm, with 70-30 ratio between equalized and original histogram: 
+	    </p>
+	    
+	    <div class="span-12">
+	    	<img class="h" src="img/almaMater.jpg" alt="almaMater" /> <!-- width="512" height="768" -->
+	    </div>
+	    
+	    <div class="span-12 last">
+	    	<img class="h" src="img/almaMater_contrast.jpg" alt="almaMater_contrast" />
+	    </div>
+    </div>
+    
+    <div class="container append-bottom">
+	    <p>
+	    	Saturation adjustment in the HSV space, with saturation raised to power 0.7.
+	    </p>
+	    
+	    <div class="span-12">
+	    	<img class="h" src="img/sancturary.jpg" alt="sancturary" /> <!-- width="1024" height="683" -->
+	    </div>
+	    
+	    <div class="span-12 last">
+	    	<img class="h" src="img/sancturary_saturation.jpg" alt="sancturary_saturation" />
+	    </div>
+    </div>
+    
+    <div class="container append-bottom">
+	    <p>
+		    Color shifting in Lab space, red shift is achieved by multiplying channel a by a factor of over one; yellow shift is achieved by multiplying 
+		    channel a by a component less than one and multiplying channel b by a component over one.
+	    </p>
+	    
+	    <div class="span-12">
+	    <img class="h" src="img/nanjing_red.jpg" alt="nanjing_red" /> <!-- width="512" height="341" -->
+	    </div>
+	    
+	    <div class="span-12 last">
+	    <img class="h" src="img/nanjing_yellow.jpg" alt="nanjing_yellow" />
+	    </div>
+	    
+	    <div class="span-24 prepend-top">
+	    <img class="h" src="img/nanjing.jpg" alt="nanjing" /> <!-- width="1024" height="683" -->
+	    </div>
+    
+    </div>
+    
+  	</div>
+    
+  </body>
+
+</html>

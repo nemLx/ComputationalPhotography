@@ -1,0 +1,422 @@
+<html>
+  <head>
+    <title>Project Three</title>
+    <link rel="stylesheet" href="../css/blueprint/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="../css/blueprint/print.css" type="text/css" media="print">
+    
+  </head>
+  
+  <body>
+  
+  	<div class="container">
+  	
+  	<div class="line-separator"></div>
+  	
+  	<h1>Gradient Domain Fusion</h1>
+  	
+  	<div class="line-separator"></div>
+  	
+    <h2>
+	    Poisson Blending
+    </h2>
+    
+    
+    <h3>
+	    Principle
+    </h3>
+    
+    <div class="span-24">
+    	<p>
+    		The following are examples of blending portions of an image into another. The method, Poisson blending, is described in detail by
+    		Perez, Gangnet and Blake in this <a href="http://www.cs.brown.edu/courses/csci1950-g/asgn/proj2/resources/PoissonImageEditing.pdf">paper</a>.
+    		In a nutshell, it solves for pixel values at each position, minimizing the gradient in horizontal and vertical direction, with respect
+    		to the target area and source image. At the edge of the region, instead of minimizing gradient with respect to source, it uses the
+    		target instead. This ensures a smooth transition on the borders.
+    	</p>
+    </div>
+    
+    <h3>
+	    Results
+    </h3>
+    
+    <div class="container append-bottom">
+    
+    	<p>Fireworks over Chicago</p>	
+	    
+	    <div class="span-24">
+	    	<img class="h" src="images/chicago_fire/chicago_fire_nomix.png" alt="chicago_fire_nomix" width="" height="" />
+	    </div>
+	    
+    </div>
+    
+    <div class="container append-bottom">
+    
+    	<p>Source pictures:</p>
+	    
+	    <div class="span-12">
+	    	<img class="h" src="images/chicago_fire/chicagonight.jpg" alt="chicagonight" width="" height="300" />
+	    </div>
+	    
+	    <div class="span-12 last">
+	    	<img class='h' src="images/chicago_fire/fireworks.jpg" alt="fireworks" width="" height="300" />
+	    </div>
+    	
+    </div>
+    
+    <div class="container append-bottom">
+    
+    	<p>Mask and direct overlay:</p>
+	    
+	    <div class="span-12">
+	    	<img class="h" src="images/chicago_fire/chicago_fire_mask.png" alt="chicago_fire_mask" width="" height="350" />
+	    </div>
+	    
+	    <div class="span-12 last">
+	    	<img class="h" src="images/chicago_fire/chicago_fire_add.png" alt="chicago_fire_add" width="" height="350" />
+	    </div>
+    </div>
+    
+    <div class="container append-bottom">
+	    
+	    <div class="span-12">
+	    	Mixed gradient:
+	    	<img class="h" src="images/chicago_fire/chicago_fire_mix.png" alt="chicago_fire_mask" width="" height="350" />
+	    </div>
+	    
+	    <div class="span-12 last">
+	    	Alpha-matting of Laplacian pyramids:
+	    	<img class="h" src="images/chicago_fire/chicago_firework_l.png" alt="chicago_fire_add" width="" height="350" />
+	    </div>
+    </div>
+    
+    <div class="container append-bottom">
+    
+    	<p>Four levels of Laplacian and their matted and merged versions at each level:</p>
+	    
+	    <p>Level 0<p>
+	    
+	    <div class="span-8">
+	    	<img class="h" src="images/chicago_fire/chicago_firework_l/l_b_1.png" alt="l_b_4" width="" height="" />
+	    </div>
+	    
+	    <div class="span-8">
+	    	<img class="h" src="images/chicago_fire/chicago_firework_l/l_f_1.png" alt="l_f_4" width="" height="" />
+	    </div>
+	    
+	    <div class="span-8 last append-bottom">
+	    	<img class="h" src="images/chicago_fire/chicago_firework_l/m_1.png" alt="l_b_4" width="" height="" />
+	    </div>
+	    
+	    <p>Level 1<p>
+	    
+	    <div class="span-8">
+	    	<img class="h" src="images/chicago_fire/chicago_firework_l/l_b_2.png" alt="l_b_4" width="" height="" />
+	    </div>
+	    
+	    <div class="span-8">
+	    	<img class="h" src="images/chicago_fire/chicago_firework_l/l_f_2.png" alt="l_f_4" width="" height="" />
+	    </div>
+	    
+	    <div class="span-8 last append-bottom">
+	    	<img class="h" src="images/chicago_fire/chicago_firework_l/m_2.png" alt="l_b_4" width="" height="" />
+	    </div>
+	    
+	    <p>Level 2<p>
+	    
+	    <div class="span-8">
+	    	<img class="h" src="images/chicago_fire/chicago_firework_l/l_b_3.png" alt="l_b_4" width="" height="" />
+	    </div>
+	    
+	    <div class="span-8">
+	    	<img class="h" src="images/chicago_fire/chicago_firework_l/l_f_3.png" alt="l_f_4" width="" height="" />
+	    </div>
+	    
+	    <div class="span-8 last append-bottom">
+	    	<img class="h" src="images/chicago_fire/chicago_firework_l/m_3.png" alt="l_b_4" width="" height="" />
+	    </div>
+	    
+	    <p>Level 3<p>
+	    
+	    <div class="span-8">
+	    	<img class="h" src="images/chicago_fire/chicago_firework_l/l_b_4.png" alt="l_b_4" width="" height="" />
+	    </div>
+	    
+	    <div class="span-8">
+	    	<img class="h" src="images/chicago_fire/chicago_firework_l/l_f_4.png" alt="l_f_4" width="" height="" />
+	    </div>
+	    
+	    <div class="span-8 last append-bottom">
+	    	<img class="h" src="images/chicago_fire/chicago_firework_l/m_4.png" alt="l_b_4" width="" height="" />
+	    </div>
+	    
+    </div>
+    
+    
+    
+    <div class="container append-bottom">
+    
+    	<p>C-17 over the Union</p>	
+	    
+	    <div class="span-24">
+	    	<img class="h" src="images/union_plane/union_plane_nomix.png" alt="chicago_fire_nomix" width="" height="600" />
+	    </div>
+	    
+    </div>
+    
+    <div class="container append-bottom">
+    
+    	<p>Source pictures:</p>
+	    
+	    <div class="span-12">
+	    	<img class="h" src="images/union_plane/unionsky.jpg" alt="chicagonight" width="" height="300" />
+	    </div>
+	    
+	    <div class="span-12 last">
+	    	<img class='h' src="images/union_plane/c17.jpg" alt="fireworks" width="" height="300" />
+	    </div>
+    	
+    </div>
+    
+    <div class="container append-bottom">
+    
+    	<p>Mask and direct overlay:</p>
+	    
+	    <div class="span-12">
+	    	<img class="h" src="images/union_plane/union_plane_mask.png" alt="chicago_fire_mask" width="" height="350" />
+	    </div>
+	    
+	    <div class="span-12 last">
+	    	<img class="h" src="images/union_plane/union_plane_add.png" alt="chicago_fire_add" width="" height="350" />
+	    </div>
+    </div>
+    
+    <div class="container append-bottom">
+	    
+	    <div class="span-12">
+	    	Mixed gradients:
+	    	<img class="h" src="images/union_plane/union_plane_mix.png" alt="chicago_fire_mask" width="" height="350" />
+	    </div>
+	    
+	    <div class="span-12 last">
+	    	Alpha-matting of Laplacian pyramids:
+	    	<img class="h" src="images/union_plane/union_plane_l.png" alt="chicago_fire_add" width="" height="350" />
+	    </div>
+    </div>
+    
+    <div class="container append-bottom">
+    
+    	<p>Four levels of Laplacian and their matted and merged versions at each level:</p>
+	    
+	    <p>Level 0<p>
+	    
+	    <div class="span-8">
+	    	<img class="h" src="images/union_plane/union_plane_l/l_b_1.png" alt="l_b_4" width="" height="" />
+	    </div>
+	    
+	    <div class="span-8">
+	    	<img class="h" src="images/union_plane/union_plane_l/l_f_1.png" alt="l_f_4" width="" height="" />
+	    </div>
+	    
+	    <div class="span-8 last append-bottom">
+	    	<img class="h" src="images/union_plane/union_plane_l/m_1.png" alt="l_b_4" width="" height="" />
+	    </div>
+	    
+	    <p>Level 1<p>
+	    
+	    <div class="span-8">
+	    	<img class="h" src="images/union_plane/union_plane_l/l_b_2.png" alt="l_b_4" width="" height="" />
+	    </div>
+	    
+	    <div class="span-8">
+	    	<img class="h" src="images/union_plane/union_plane_l/l_f_2.png" alt="l_f_4" width="" height="" />
+	    </div>
+	    
+	    <div class="span-8 last append-bottom">
+	    	<img class="h" src="images/union_plane/union_plane_l/m_2.png" alt="l_b_4" width="" height="" />
+	    </div>
+	    
+	    <p>Level 2<p>
+	    
+	    <div class="span-8">
+	    	<img class="h" src="images/union_plane/union_plane_l/l_b_3.png" alt="l_b_4" width="" height="" />
+	    </div>
+	    
+	    <div class="span-8">
+	    	<img class="h" src="images/union_plane/union_plane_l/l_f_3.png" alt="l_f_4" width="" height="" />
+	    </div>
+	    
+	    <div class="span-8 last append-bottom">
+	    	<img class="h" src="images/union_plane/union_plane_l/m_3.png" alt="l_b_4" width="" height="" />
+	    </div>
+	    
+	    <p>Level 3<p>
+	    
+	    <div class="span-8">
+	    	<img class="h" src="images/union_plane/union_plane_l/l_b_4.png" alt="l_b_4" width="" height="" />
+	    </div>
+	    
+	    <div class="span-8">
+	    	<img class="h" src="images/union_plane/union_plane_l/l_f_4.png" alt="l_f_4" width="" height="" />
+	    </div>
+	    
+	    <div class="span-8 last append-bottom">
+	    	<img class="h" src="images/union_plane/union_plane_l/m_4.png" alt="l_b_4" width="" height="" />
+	    </div>
+	    
+    </div>
+	    
+    
+    <div class="line-separator"></div>
+    
+    <h3>
+	    Using Mixed Gradient:
+    </h3>
+    
+    <div class="span-24">
+    	<p>
+    		Following small examples demonstrate the difference between using gradient sole based on background image,
+    		or using either background or foreground, depending on which has the largest absolute value.
+    	</p>
+    </div>
+    
+    <div class="container append-bottom">
+    
+    	<p>Obama on an orange:</p>
+    	
+    	<div class="span-12">
+    		<img class="h" src="images/orange_obama/obama.jpg" alt="obama" width="" height="450" />
+    	</div>
+    	
+    	<div class="span-12 last append-bottom">
+    		<img class="h" src="images/orange_obama/orange2.png" alt="orange2" width="" height="450" />
+    	</div>
+    	
+    	<div class="span-12">
+    		<img class="h" src="images/orange_obama/orange_obama_mask.png" alt="obama" width="" height="" />
+    	</div>
+    	
+    	<div class="span-12 last append-bottom">
+    		<img class="h" src="images/orange_obama/orange_obama_add.png" alt="orange2" width="" height="" />
+    	</div>
+    	
+    	<div class="span-12">
+    		Using gradient only on the source patch:
+    		<img class="h" src="images/orange_obama/orange_obama_nomix.png" alt="obama" width="" height="" />
+    	</div>
+    	
+    	<div class="span-12 last append-bottom">
+    		Using gradient that has largest absolute value:
+    		<img class="h" src="images/orange_obama/orange_obama_mix.png" alt="orange2" width="" height="" />
+    	</div>
+    
+    </div>
+    
+    <div class="container append-bottom">
+    
+    	<p>Monalisa with a new face:</p>
+    	
+    	<div class="span-12">
+    		<img class="h" src="images/monalisa_face/face.png" alt="obama" width="" height="" />
+    	</div>
+    	
+    	<div class="span-12 last append-bottom">
+    		<img class="h" src="images/monalisa_face/monalisa.png" alt="orange2" width="" height="" />
+    	</div>
+    	
+    	<div class="span-12">
+    		Using gradient only on the source patch:
+    		<img class="h" src="images/monalisa_face/monalisa_face_nomix.png" alt="obama" width="" height="" />
+    	</div>
+    	
+    	<div class="span-12 last append-bottom">
+    		Using gradient that has largest absolute value:
+    		<img class="h" src="images/monalisa_face/monalisa_face_mix.png" alt="orange2" width="" height="" />
+    	</div>
+    
+    </div>
+    
+    <div class="line-separator"></div>
+    
+    <h2>Color to Gray Based on Gradient</h2>
+    
+    <p>
+    	The following image is used to test color blindness, as people with such conditions will not be able to see
+    	the number in color. rgb2gray in Matlab will yield results similar to that. In order to keep the color intensity
+    	information in the grayscale image, I solved for pixel values that minimizes the gradient on the Value channel
+    	in the HSV space of the picture. Also to retain relevancy to rgb2gray, I set the top left pixel to be the same.
+    </p>
+    
+    <div class="container append-bottom">
+    
+	    <div class="span-8">
+	    	Original:
+	    	<img class="h" src="images/others/colorTest.png" alt="colorTest" width="" height="" />
+	    </div>
+	    
+	    <div class="span-8">
+	    	rgb2gray result:
+	    	<img class="h" src="images/others/rgb2gray.png" alt="colorTest" width="" height="" />
+	    </div>
+	    
+		<div class="span-8 last">
+			Custom result:
+	    	<img class="h" src="images/others/rgbTogray.png" alt="rgbTogray" width="" height="" />
+	    </div>    
+    
+    </div>
+    
+    <div class="line-separator"></div>
+    
+    <h2>Challenges</h2> 
+    
+    <div class="container append-bottom">
+   	<ul> 
+	    <li>
+		    When constructing the linear system for least squared solution, it took me some time to figure out a efficient way
+		    to keep track of which pixels are on the border of the patch. I ended up using two map(matrix based) that both
+		    maps variable to coordinates and vice versa.
+	    </li>
+	    
+	    <li>
+		    It is also tricky to keep track the number of equations needed to map them correctly to pixels. I assigned each pixel
+		    a type, defined by a four bit number, where each bit signifies whether a certain direction of the pixel has another
+		    pixel that is out of the patch region. This way I could keep track of which equations to add and identify borders at
+		    the same time.
+	    </li>
+	    
+	    <li>
+		    This difficulty is not technical but I spent a lot of time coming up with ideas of blending images. Obviously not all
+		    subjects are easy to blend, and without easy manipulation of patch size and arrangement, it takes many trials and errors
+		    to figure out the optimal choices for patch, background and patch arrangement. See the following failed example, where
+		    I tried to put Leonardo DaVinci's portrait painting on to Monalisa's face. It didn't work so well since the two faces
+		    have very different shape as well as texture. So even if a small part of Monalisa's face is not covered with DaVinci's,
+		    it is very obvious and ruins the whole image. Monalisa's hair didn't help either, as it always made the patch darker.
+	    </li>
+    <ul>
+    </div>
+    
+    <div class="container append-bottom">
+    	<div class="span-12">
+	    	<img class="h" src="images/monalisa_davinci/davinci.jpg" alt="davinci" width="" height="400" />
+	    </div>
+	    
+	    <div class="span-12 last append-bottom">
+	    	<img class="h" src="images/monalisa_davinci/monalisa.png" alt="monalisa" width="" height="400" />
+	    </div>
+	    
+	    <div class="span-12">
+	    	Monotone gradient:
+	    	<img class="h" src="images/monalisa_davinci/monalisa_davinci_nomix.png" alt="davinci" width="" height="" />
+	    </div>
+	    
+	    <div class="span-12 last">
+	    	Mixed gradient:
+	    	<img class="h" src="images/monalisa_davinci/monalisa_davinci_mix.png" alt="davinci" width="" height="" />
+	    </div>
+    </div>
+    
+  	</div>
+  	
+  </body>
+
+</html>

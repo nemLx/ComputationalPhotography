@@ -1,0 +1,240 @@
+<html>
+  <head>
+    <title>Project Four</title>
+    <link rel="stylesheet" href="../css/blueprint/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="../css/blueprint/print.css" type="text/css" media="print">
+    
+  </head>
+  
+  <body>
+  
+  	<div class="container">
+  	
+  	<div class="line-separator"></div>
+  	
+  	<h1>Image Morphing</h1>
+  	
+  	<div class="line-separator"></div>
+  	
+    <h2>
+	    Face Morphing
+    </h2>
+    
+    
+    <h3>
+	    Principle
+    </h3>
+    
+    <div class="span-24">
+    	<p>
+    		Morphing between two images involves two major components - geometry and texture. Geometry is achieved by 
+    		first defining key points that represents a correspondence between source and target, triangulating the
+    		points, then use affine transformation locally on each triangle, as demonstrated below. Local morphing
+    		enables preservation of key geometric features. In the case of face morphing, this means the geometry
+    		of organs on the faces and the overall shape of the faces are all locally handled. In general, when morphing
+    		objects, it is preferable to choose objects with similar geometry, and convex shapes are better than concave
+    		shapes. Texture is achieved by simply proportionally blending pixel values of the two images together. 
+    	</p>
+    </div>
+    
+    <h3>
+	    Results
+    </h3>
+    
+    <div class="container append-bottom">
+    
+    	<p>Standard Result - nemo to Ramy</p>
+	    
+	    <div class="span-12">
+	    	<iframe class="h" height='45%' src="http://www.youtube.com/embed/RsHV1cz6K94" frameborder="0" allowfullscreen></iframe> 
+	    </div>
+	    
+	    <div class="span-12 last">
+	    	<iframe class="h" height='45%' src="http://www.youtube.com/embed/1kJsE-MD-s8" frameborder="0" allowfullscreen></iframe> 
+	    </div>
+	    
+    </div>
+    
+    <div class="container append-bottom">
+    
+    	<p> Morph of entire class </p>
+    	
+    	<div class="span-6">
+    		<p></p>
+    	</div>
+    	
+    	<div class="span-12">
+	    	<iframe class="h" height='45%' src="http://www.youtube.com/embed/XiQyEOGS41o" frameborder="0" allowfullscreen></iframe> 
+	    </div>
+    	
+    	<div class="span-6 last">
+    		<p></p>
+    	</div>
+    	
+    </div>
+	
+	
+	
+    <div class="line-separator"></div>
+    
+    
+    
+    <h3>
+	    Average Face
+    </h3>
+    
+    <div class="span-24">
+    	<p>
+    		Average face of a face dataset could be obtained by computing the average geometry and texture of all faces in the dataset.
+    		In this case, the geometry is obtained by the average x-y coordinate of each key point of correspondence on all face images.
+    		And the average texture is obtainer by blend pixels of each face at each location evenly. 
+    	</p>
+    </div>
+
+    <h3>Results:</h3>
+    
+    <div class="container append-bottom">
+    	<p>Average face of all persons in the video above:</p>
+    	
+    	<div class="span-6">
+    		<p></p>
+    	</div>
+    	
+    	<div class="span-12">
+    		<img class="h" src="data/img/meanFace.jpg" alt="meanFace" width="" height="" />
+    	</div>
+    	
+    	<div class="span-6 last">
+    		<p></p>
+    	</div>
+    	
+    </div>
+    
+    <div class="container append-bottom">
+    	<p>Average male and female face:</p>
+
+    	<div class="span-12">
+    		<img class="h" src="data/img/meanFace_m.jpg" alt="meanFace" width="" height="" />
+    	</div>
+    	
+    	<div class="span-12 last">
+    		<img class="h" src="data/img/meanFace_f.jpg" alt="meanFace" width="" height="" />
+    	</div>
+    </div>
+    
+    <div class="container append-bottom">
+	    
+	    <p>Morphing into the average face:</p>
+	    
+	    <div class="span-12">
+	    	<iframe class="h" height='45%' src="http://www.youtube.com/embed/Imvab7aYups" frameborder="0" allowfullscreen></iframe> 
+	    </div>
+	    
+	    <div class="span-12 last">
+	    	<iframe class="h" height='45%' src="http://www.youtube.com/embed/QyfFcdKtkx0" frameborder="0" allowfullscreen></iframe> 
+	    </div>
+	    
+    </div>
+    
+    <div class="container append-bottom">
+	    
+	    <p>Masculinizing and feminizing:</p>
+	    
+	    <div class="span-12">
+	    	<iframe class="h" height='45%' src="http://www.youtube.com/embed/Xm3JniPtTxg" frameborder="0" allowfullscreen></iframe> 
+	    </div>
+	    
+	    <div class="span-12 last">
+	    	<iframe class="h" height='45%' src="http://www.youtube.com/embed/xwOwfHS5d2A" frameborder="0" allowfullscreen></iframe> 
+	    </div>
+	    
+    </div>
+    
+    <div class="container append-bottom">
+	    
+	    <p>Extrapolating beyond masculine and feminine averages: </p>
+	    
+	    <div class="span-12">
+	    	<iframe class="h" height='45%' src="http://www.youtube.com/embed/x65IW_gC2jI" frameborder="0" allowfullscreen></iframe> 
+	    </div>
+	    
+	    <div class="span-12 last">
+	    	<iframe class="h" height='45%' src="http://www.youtube.com/embed/oROal63QTOk" frameborder="0" allowfullscreen></iframe> 
+	    </div>
+	    
+    </div>
+    
+    
+    <div class="line-separator"></div>
+    
+    <h2>Morphing using Caricatures' Geometry</h2>
+    
+    <h3>
+	    Results:
+    </h3>
+    
+    <div class="container append-bottom">
+    	<p>House</p>
+    	
+    	<div class="span-12">
+    		<img class="h" src="data/img/house.jpg" alt="house" width="" height="" />
+    	</div>
+    	
+    	<div class="span-12 last">
+	    	<iframe class="h" height='45%' src="http://www.youtube.com/embed/y3qxmarQLgU" frameborder="0" allowfullscreen></iframe> 
+	    </div>
+    	
+    </div>
+    
+    <div class="container append-bottom">
+    	<p>Will Smith</p>
+    	
+    	<div class="span-12">
+    		<img class="h" src="data/img/smith.jpg" alt="house" width="" height="" />
+    	</div>
+    	
+    	<div class="span-12 last">
+	    	<iframe class="h" height='45%' src="http://www.youtube.com/embed/uOGjU1i-AL0" frameborder="0" allowfullscreen></iframe> 
+	    </div>
+    	
+    </div>
+    
+    
+    
+    <div class="line-separator"></div>
+    
+    
+    
+    <h2>Morphing of Other Objects</h2>
+
+    <p>
+    	When morphing general objects, it is important to find objects that have good matching of convex geometry. And key point
+	    selection also plays a critical role in the quality of the morph. 
+    </p>
+    
+    <h3>
+    	Result:
+    </h3>
+    
+    <div class="container append-bottom">
+	    
+	    <p>Morphing of logos of all versions of Microsoft Windows: </p>
+	    
+	    <div class="span-6">
+		    <p></p>
+	    </div>
+	    
+	    <div class="span-12 last">
+	    	<iframe class="h" height='45%' src="http://www.youtube.com/embed/Na6G2RhMFP4" frameborder="0" allowfullscreen></iframe> 
+	    </div>
+	    
+	    <div class="span-6">
+	    	<p></p>
+	    </div>
+	    
+    </div>
+    
+    
+  	</div>
+  </body>
+</html>
